@@ -1,5 +1,3 @@
-// src/ui/navbar.ts
-
 import { fetchSports } from "../api/sports.js";
 import type { Sport } from "../utils/types.js";
 

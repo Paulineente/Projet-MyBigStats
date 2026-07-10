@@ -1,5 +1,3 @@
-// src/router.ts
-
 import { renderHomePage } from "./pages/home.js";
 import { renderSportsPage } from "./pages/sports.js";
 import { renderSportPage } from "./pages/sport.js";
