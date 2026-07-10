@@ -1,5 +1,5 @@
-import type { Sport } from "../utils/types";
-import { notifyError } from "../utils/errors";
+import type { Sport } from "../utils/types.js";
+import { notifyError } from "../utils/errors.js";
 
 const SPORTS_URL = "https://keligmartin.github.io/api/sports.json";
 

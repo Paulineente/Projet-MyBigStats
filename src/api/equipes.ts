@@ -1,5 +1,5 @@
-import type { Equipe } from "../utils/types";
-import { notifyError } from "../utils/errors";
+import type { Equipe } from "../utils/types.js";
+import { notifyError } from "../utils/errors.js";
 
 const EQUIPES_URL = "https://keligmartin.github.io/api/equipes.json";
 

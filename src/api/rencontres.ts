@@ -1,5 +1,5 @@
-import type { Rencontre } from "../utils/types";
-import { notifyError } from "../utils/errors";
+import type { Rencontre } from "../utils/types.js";
+import { notifyError } from "../utils/errors.js";
 
 const RENCONTRES_URL = "https://keligmartin.github.io/api/rencontres.json";
 
