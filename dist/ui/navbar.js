@@ -26,6 +26,12 @@ export function renderNavbar(container) {
             window.location.hash = "#sports";
         };
         nav.appendChild(sportsBtn);
+        const athletesBtn = document.createElement("button");
+        athletesBtn.textContent = "Athlètes";
+        athletesBtn.onclick = () => {
+            window.location.hash = "#athletes";
+        };
+        nav.appendChild(athletesBtn);
         // Liste dynamique des sports
         const sports = yield fetchSports();
         sports.forEach((sport) => {

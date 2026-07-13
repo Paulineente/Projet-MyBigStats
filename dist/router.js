@@ -1,4 +1,5 @@
 import { renderHomePage } from "./pages/home.js";
+import { renderAthletesPage } from "./pages/athletes.js";
 import { renderSportsPage } from "./pages/sports.js";
 import { renderSportPage } from "./pages/sport.js";
 import { notifyError } from "./utils/errors.js";
@@ -14,6 +15,10 @@ export function initRouter(main) {
         // Page listant tous les sports
         if (hash === "#sports") {
             renderSportsPage(main);
+            return;
+        }
+        if (hash === "#athletes") {
+            renderAthletesPage(main);
             return;
         }
         // Page d'un sport spécifique

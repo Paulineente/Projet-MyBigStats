@@ -1,4 +1,5 @@
 import { renderHomePage } from "./pages/home.js";
+import { renderAthletesPage } from "./pages/athletes.js";
 import { renderSportsPage } from "./pages/sports.js";
 import { renderSportPage } from "./pages/sport.js";
 
@@ -18,6 +19,12 @@ export function initRouter(main: HTMLElement): void {
     // Page listant tous les sports
     if (hash === "#sports") {
       renderSportsPage(main);
+      return;
+    }
+    
+    // Page listant tous les athlètes
+    if (hash === "#athletes") {
+      renderAthletesPage(main);
       return;
     }
 

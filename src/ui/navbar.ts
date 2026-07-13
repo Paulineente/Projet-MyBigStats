@@ -21,6 +21,14 @@ export async function renderNavbar(container: HTMLElement): Promise<void> {
   };
   nav.appendChild(sportsBtn);
 
+  // Bouton Athletes (page listant tous les athlètes)
+  const athletesBtn = document.createElement("button");
+  athletesBtn.textContent = "Athlètes";
+  athletesBtn.onclick = () => {
+    window.location.hash = "#athletes";
+  };
+  nav.appendChild(athletesBtn);
+
   // Liste dynamique des sports
   const sports: Sport[] = await fetchSports();
 
