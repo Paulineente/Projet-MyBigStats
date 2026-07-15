@@ -26,6 +26,7 @@ export function renderNavbar(container) {
             window.location.hash = "#sports";
         };
         nav.appendChild(sportsBtn);
+        // Bouton Athletes (page listant tous les athlètes)
         const athletesBtn = document.createElement("button");
         athletesBtn.textContent = "Athlètes";
         athletesBtn.onclick = () => {

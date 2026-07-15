@@ -1,0 +1,84 @@
+.athletes-page {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.athletes-column {
+  min-width: 0;
+}
+
+.athletes-column-right {
+  padding: 16px;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+#athletes-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+#athletes-controls input {
+  flex: 1 1 240px;
+  min-width: 200px;
+}
+
+#athletes-controls select {
+  flex: 0 0 180px;
+  min-width: 170px;
+}
+
+.comparison-field input,
+.compare-button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.comparison-fields {
+  display: grid;
+  gap: 12px;
+}
+
+.comparison-field {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.compare-button {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.compare-result {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+}
+
+.comparison-summary p {
+  margin: 0 0 8px;
+}
+
+#athletes-list {
+  display: grid;
+  gap: 16px;
+}
+
+.athlete-card {
+  padding: 12px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .athletes-page {
+    grid-template-columns: 1fr;
+  }
+}
