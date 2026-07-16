@@ -91,6 +91,7 @@ export async function renderAthletesPage(main: HTMLElement): Promise<void> {
 		renderAthleteCards(list, visibleAthletes);
 
 		populateCategoryOptions(categorySelect, athletes, filters.sportId);
+        categorySelect.value = filters.category; // affiche l'option sélectionnée
 	};
 
 	searchInput.addEventListener("input", () => {

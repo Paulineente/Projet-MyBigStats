@@ -70,6 +70,7 @@ export function renderAthletesPage(main) {
             const visibleAthletes = applyFilters(athletes, filters);
             renderAthleteCards(list, visibleAthletes);
             populateCategoryOptions(categorySelect, athletes, filters.sportId);
+            categorySelect.value = filters.category;
         };
         searchInput.addEventListener("input", () => {
             filters.query = searchInput.value.trim().toLowerCase();
