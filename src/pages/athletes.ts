@@ -26,7 +26,7 @@ export async function renderAthletesPage(main: HTMLElement): Promise<void> {
 
 	const rightColumn = document.createElement("aside");
 	rightColumn.className = "athletes-column athletes-column-right";
-	rightColumn.setAttribute("aria-label", "Comparaison des athlètes");
+	rightColumn.setAttribute("aria-label", "Comparer deux athlètes");
 
 	const controls = document.createElement("section");
 	controls.id = "athletes-controls";
@@ -352,7 +352,8 @@ function getAthleteCategory(athlete: Athlete): string {
 function getSportLabel(sportId: Athlete["sport_id"]): string {
 	if (sportId === 1) return "Football";
 	if (sportId === 2) return "Basketball";
-	return "MMA";
+    if (sportId === 3) return "MMA";
+    return "Autre";
 }
 
 function getComparisonLines(left: Athlete, right: Athlete): string[] {

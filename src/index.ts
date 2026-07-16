@@ -1,11 +1,15 @@
-import { createAppLayout } from "./ui/layout.js";
-import { renderNavbar } from "./ui/navbar.js";
+import { renderLayout } from "./ui/layout.js";
 import { initRouter } from "./router.js";
 
-function initApp() {
-  const { header, main } = createAppLayout();
-  renderNavbar(header);
-  initRouter(main);
-}
+window.addEventListener("DOMContentLoaded", () => {
+  const root = document.getElementById("app");
 
-initApp();
+  if (!root) {
+    console.error("Impossible de trouver #app dans index.html");
+    return;
+  }
+
+  const main = renderLayout(root);
+
+  initRouter(main);
+});

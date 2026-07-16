@@ -1,47 +1,31 @@
-import { fetchSports } from "../api/sports.js";
-import type { Sport } from "../utils/types.js";
+export function renderNavbar(container: HTMLElement): void {
+  const header = document.createElement("header");
+  header.id = "navbar";
 
-export async function renderNavbar(container: HTMLElement): Promise<void> {
-  const nav = document.createElement("nav");
-  nav.id = "navbar";
+  // Nom du projet
+  const brand = document.createElement("div");
+  brand.className = "navbar-brand";
+  brand.textContent = "My Big Stats";
 
-  // Bouton Home
-  const homeBtn = document.createElement("button");
-  homeBtn.textContent = "Accueil";
-  homeBtn.onclick = () => {
-    window.location.hash = "#home";
+  // Liens de navigation
+  const navLinks = document.createElement("nav");
+  navLinks.className = "navbar-links";
+
+  const homeLink = createNavButton("Accueil", "#home");
+  const sportsLink = createNavButton("Sports", "#sports");
+  const athletesLink = createNavButton("Athlètes", "#athletes");
+
+  navLinks.append(homeLink, sportsLink, athletesLink);
+
+  header.append(brand, navLinks);
+  container.appendChild(header);
+}
+
+function createNavButton(label: string, hash: string): HTMLButtonElement {
+  const btn = document.createElement("button");
+  btn.textContent = label;
+  btn.onclick = () => {
+    window.location.hash = hash;
   };
-  nav.appendChild(homeBtn);
-
-  // Bouton Sports (page listant tous les sports)
-  const sportsBtn = document.createElement("button");
-  sportsBtn.textContent = "Sports";
-  sportsBtn.onclick = () => {
-    window.location.hash = "#sports";
-  };
-  nav.appendChild(sportsBtn);
-
-  // Bouton Athletes (page listant tous les athlètes)
-  const athletesBtn = document.createElement("button");
-  athletesBtn.textContent = "Athlètes";
-  athletesBtn.onclick = () => {
-    window.location.hash = "#athletes";
-  };
-  nav.appendChild(athletesBtn);
-
-  // Liste dynamique des sports
-  const sports: Sport[] = await fetchSports();
-
-  sports.forEach((sport) => {
-    const btn = document.createElement("button");
-    btn.textContent = sport.name;
-
-    btn.onclick = () => {
-      window.location.hash = `#sport-${sport.id}`;
-    };
-
-    nav.appendChild(btn);
-  });
-
-  container.appendChild(nav);
+  return btn;
 }

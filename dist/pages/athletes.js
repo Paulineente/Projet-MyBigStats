@@ -13,7 +13,6 @@ import { notifyError } from "../utils/errors.js";
 export function renderAthletesPage(main) {
     return __awaiter(this, void 0, void 0, function* () {
         main.innerHTML = "";
-        ensureAthletesPageStyles();
         const title = document.createElement("h1");
         title.textContent = "Athlètes";
         const description = document.createElement("p");
@@ -24,7 +23,7 @@ export function renderAthletesPage(main) {
         leftColumn.className = "athletes-column athletes-column-left";
         const rightColumn = document.createElement("aside");
         rightColumn.className = "athletes-column athletes-column-right";
-        rightColumn.setAttribute("aria-label", "Comparaison des athlètes");
+        rightColumn.setAttribute("aria-label", "Comparer deux athlètes");
         const controls = document.createElement("section");
         controls.id = "athletes-controls";
         const searchInput = document.createElement("input");
@@ -267,7 +266,9 @@ function getSportLabel(sportId) {
         return "Football";
     if (sportId === 2)
         return "Basketball";
-    return "MMA";
+    if (sportId === 3)
+        return "MMA";
+    return "Autre";
 }
 function getComparisonLines(left, right) {
     if (left.sport_id === 1 && right.sport_id === 1) {
@@ -312,100 +313,6 @@ function getComparisonLines(left, right) {
 }
 function normalizeSearch(value) {
     return value.trim().toLowerCase().replace(/\s+/g, " ");
-}
-function ensureAthletesPageStyles() {
-    if (document.getElementById("athletes-page-styles")) {
-        return;
-    }
-    const style = document.createElement("style");
-    style.id = "athletes-page-styles";
-    style.textContent = `
-		.athletes-page {
-			display: grid;
-			grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
-			gap: 24px;
-			align-items: start;
-		}
-
-		.athletes-column {
-			min-width: 0;
-		}
-
-		.athletes-column-right {
-			padding: 16px;
-			border: 1px solid #d0d0d0;
-			border-radius: 12px;
-			background: #fafafa;
-		}
-
-		#athletes-controls {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
-			margin-bottom: 16px;
-		}
-
-		#athletes-controls input {
-			flex: 1 1 240px;
-			min-width: 200px;
-		}
-
-		#athletes-controls select {
-			flex: 0 0 180px;
-			min-width: 170px;
-		}
-
-		.comparison-field input,
-		.compare-button {
-			width: 100%;
-			box-sizing: border-box;
-		}
-
-		.comparison-fields {
-			display: grid;
-			gap: 12px;
-		}
-
-		.comparison-field {
-			display: grid;
-			gap: 6px;
-			font-weight: 600;
-		}
-
-		.compare-button {
-			padding: 10px 12px;
-			cursor: pointer;
-		}
-
-		.compare-result {
-			margin-top: 16px;
-			padding-top: 12px;
-			border-top: 1px solid #ddd;
-		}
-
-		.comparison-summary p {
-			margin: 0 0 8px;
-		}
-
-		#athletes-list {
-			display: grid;
-			gap: 16px;
-		}
-
-		.athlete-card {
-			padding: 12px 14px;
-			border: 1px solid #e0e0e0;
-			border-radius: 10px;
-			background: #fff;
-		}
-
-		@media (max-width: 900px) {
-			.athletes-page {
-				grid-template-columns: 1fr;
-			}
-		}
-	`;
-    document.head.appendChild(style);
 }
 function formatPrimaryStats(athlete) {
     if (athlete.sport_id === 1) {

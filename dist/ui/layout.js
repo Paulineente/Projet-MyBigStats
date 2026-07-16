@@ -1,15 +1,12 @@
-export function createAppLayout() {
-    const app = document.getElementById("app");
-    if (!app) {
-        throw new Error("Élément #app introuvable dans le DOM");
-    }
-    const header = document.createElement("header");
-    header.id = "header";
+import { renderNavbar } from "./navbar.js";
+import { renderFooter } from "./footer.js";
+export function renderLayout(root) {
+    root.innerHTML = "";
+    const navbarContainer = document.createElement("div");
+    renderNavbar(navbarContainer);
     const main = document.createElement("main");
-    main.id = "main";
-    const footer = document.createElement("footer");
-    footer.id = "footer";
-    footer.textContent = "MyBigStats ©";
-    app.append(header, main, footer);
-    return { app, header, main, footer };
+    const footerContainer = document.createElement("div");
+    renderFooter(footerContainer);
+    root.append(navbarContainer, main, footerContainer);
+    return main;
 }
