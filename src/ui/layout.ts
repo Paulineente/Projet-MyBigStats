@@ -1,25 +1,18 @@
-export function createAppLayout(): {
-  app: HTMLElement;
-  header: HTMLElement;
-  main: HTMLElement;
-  footer: HTMLElement;
-} {
-  const app = document.getElementById("app");
-  if (!app) {
-    throw new Error("Élément #app introuvable dans le DOM");
-  }
+import { renderNavbar } from "./navbar.js";
+import { renderFooter } from "./footer.js";
 
-  const header = document.createElement("header");
-  header.id = "header";
+export function renderLayout(root: HTMLElement): HTMLElement {
+  root.innerHTML = "";
+
+  const navbarContainer = document.createElement("div");
+  renderNavbar(navbarContainer);
 
   const main = document.createElement("main");
-  main.id = "main";
 
-  const footer = document.createElement("footer");
-  footer.id = "footer";
-  footer.textContent = "MyBigStats ©";
+  const footerContainer = document.createElement("div");
+  renderFooter(footerContainer);
 
-  app.append(header, main, footer);
+  root.append(navbarContainer, main, footerContainer);
 
-  return { app, header, main, footer };
+  return main; 
 }

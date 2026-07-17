@@ -17,6 +17,7 @@ export function initRouter(main) {
             renderSportsPage(main);
             return;
         }
+        // Page listant tous les athlètes
         if (hash === "#athletes") {
             renderAthletesPage(main);
             return;
