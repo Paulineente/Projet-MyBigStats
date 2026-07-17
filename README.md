@@ -76,7 +76,117 @@ index.ts
 index.html
 tsconfig.json
 dist/
+# Bonus personnel - Analytics Dashboard 📊
+
+## Présentation
+
+J'ai ajouté un module d'analyse statistique indépendant afin d'améliorer l'expérience utilisateur et d'apporter une vision globale des données disponibles dans MyBigStats.
+
+L'objectif était d'ajouter une fonctionnalité supplémentaire sans modifier l'architecture existante du projet.
+
+---
+
+## Choix d'architecture
+
+J'ai choisi de créer un module séparé dans :
+
 ```
+src/bonus/analytics/
+```
+
+afin de respecter le principe de séparation des responsabilités.
+
+Le module est organisé en plusieurs parties :
+
+* `analytics.page.ts`
+  → gestion du chargement des données et orchestration de l'affichage.
+
+* `analytics.service.ts`
+  → traitement des données et calcul des statistiques générales.
+
+* `analytics.records.ts`
+  → calcul des meilleurs athlètes selon leur sport.
+
+* `analytics.dom.ts`
+  → création dynamique de l'interface avec le DOM.
+
+* `analytics.types.ts`
+  → définition des types TypeScript utilisés par le module.
+
+---
+
+## Fonctionnalités ajoutées
+
+### Tableau de bord global
+
+Ajout d'une page Analytics permettant d'afficher :
+
+* nombre total d'athlètes ;
+* nombre de sports ;
+* nombre d'équipes ;
+* nombre de rencontres.
+
+---
+
+### Répartition des athlètes
+
+J'ai ajouté une représentation visuelle dynamique de la répartition des athlètes par sport.
+
+Le graphique est généré uniquement avec les outils natifs du navigateur :
+
+* création d'éléments HTML avec `createElement`;
+* modification dynamique des styles ;
+* calcul automatique des proportions.
+
+Aucune bibliothèque externe n'a été utilisée.
+
+---
+
+### Top Performers
+
+Ajout d'un classement automatique des meilleurs profils selon leur discipline :
+
+* Football → nombre de buts ;
+* Basketball → moyenne de points par match ;
+* MMA → nombre de victoires.
+
+Le système s'adapte automatiquement aux données récupérées depuis l'API.
+
+---
+
+## Gestion TypeScript
+
+J'ai utilisé TypeScript afin de sécuriser les échanges entre les différentes parties du module.
+
+Les interfaces permettent :
+
+* d'éviter les erreurs de manipulation des données ;
+* de garantir une structure claire ;
+* de faciliter la maintenance et les évolutions futures.
+
+---
+
+## Gestion de l'asynchronisme
+
+Les données nécessaires au dashboard sont récupérées de manière asynchrone avec `Promise` et `async/await`.
+
+L'utilisation de `Promise.all()` permet de charger plusieurs ressources simultanément :
+
+* athlètes ;
+* sports ;
+* équipes ;
+* rencontres.
+
+Cela améliore les performances et simplifie la gestion du chargement.
+
+---
+
+## Pourquoi ce choix ?
+
+Cette approche permet d'ajouter une fonctionnalité importante sans modifier le fonctionnement existant de l'application.
+
+Le module Analytics reste indépendant, réutilisable et facilement extensible pour ajouter d'autres statistiques dans le futur.
+
 
 ## Technologies utilisées
 
@@ -88,6 +198,7 @@ dist/
 - CSS simple
 
 ---
+
 
 ## Installation & lancement
 
@@ -109,4 +220,4 @@ npx serve .
 ### 4. Ouvrir le site
 ```
 http://localhost:3000
-```
+`
